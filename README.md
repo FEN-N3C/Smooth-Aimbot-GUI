@@ -2,5 +2,5 @@
 sum slight sum slight
 
 ``` lua
-https://raw.githubusercontent.com/FEN-N3C/Smooth-Aimbot-GUI/main/source.lua
+loadstring(game:HttpGet("https://raw.githubusercontent.com/FEN-N3C/Smooth-Aimbot-GUI/main/source.lua", true))()
 ```
