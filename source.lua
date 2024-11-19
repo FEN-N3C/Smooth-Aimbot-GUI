@@ -3,6 +3,7 @@ local playerGui = player:WaitForChild("PlayerGui")
 
 local sagui = Instance.new("ScreenGui")
 sagui.Name = "SAGUI"
+sagui.ResetOnSpawn = false
 sagui.Parent = playerGui
 
 local container = Instance.new("Frame")
@@ -30,6 +31,7 @@ title.Position = UDim2.new(0.017, 0, 0.17, 0)
 title.Text = "Smooth Aimbot GUI"
 title.TextScaled = true
 title.TextColor3 = Color3.fromRGB(255, 255, 255)
+title.Font = Enum.Font.GothamBold
 title.TextXAlignment = Enum.TextXAlignment.Left
 title.BackgroundTransparency = 1
 title.Parent = header
@@ -89,6 +91,7 @@ trackingText.Text = "Aimbot Enabled"
 trackingText.TextScaled = true
 trackingText.TextColor3 = Color3.fromRGB(255, 255, 255)
 trackingText.TextXAlignment = Enum.TextXAlignment.Left
+trackingText.Font = Enum.Font.GothamBold
 trackingText.BackgroundTransparency = 1
 trackingText.Parent = trackingEnabledFrame
 
@@ -114,6 +117,18 @@ local trackingbuttoncorner = Instance.new("UICorner")
 trackingbuttoncorner.CornerRadius = UDim.new(0, 8)
 trackingbuttoncorner.Parent = checkmarkTracking
 
+local uistroketracking = Instance.new("UIStroke")
+uistroketracking.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+uistroketracking.Color = Color3.fromRGB(139, 139, 139)
+uistroketracking.Thickness = 1
+uistroketracking.Parent = trackingEnabledFrame
+
+local uistroketrackingbtn = Instance.new("UIStroke")
+uistroketrackingbtn.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+uistroketrackingbtn.Color = Color3.fromRGB(139, 139, 139)
+uistroketrackingbtn.Thickness = 1
+uistroketrackingbtn.Parent = checkmarkTracking
+
 local wallcheckFrame = Instance.new("Frame")
 wallcheckFrame.Name = "Wallcheck"
 wallcheckFrame.Size = UDim2.new(0, 479, 0, 42)
@@ -127,9 +142,16 @@ wallcheckText.Position = UDim2.new(0.019, 0, 0.19, 0)
 wallcheckText.Text = "Wallcheck"
 wallcheckText.TextScaled = true
 wallcheckText.TextColor3 = Color3.fromRGB(255, 255, 255)
+wallcheckText.Font = Enum.Font.GothamBold
 wallcheckText.TextXAlignment = Enum.TextXAlignment.Left
 wallcheckText.BackgroundTransparency = 1
 wallcheckText.Parent = wallcheckFrame
+
+local uistrokewallcheck = Instance.new("UIStroke")
+uistrokewallcheck.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+uistrokewallcheck.Color = Color3.fromRGB(139, 139, 139)
+uistrokewallcheck.Thickness = 1
+uistrokewallcheck.Parent = wallcheckFrame
 
 local wallcheckUICorner = Instance.new("UICorner")
 wallcheckUICorner.CornerRadius = UDim.new(0, 8)
@@ -149,22 +171,92 @@ checkmarkWallcheck.ImageTransparency = 1
 checkmarkWallcheck.BackgroundColor3 = Color3.fromRGB(21, 23, 27)
 checkmarkWallcheck.Parent = wallcheckFrame
 
+local uistrokewallcheckcheck = Instance.new("UIStroke")
+uistrokewallcheckcheck.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+uistrokewallcheckcheck.Color = Color3.fromRGB(139, 139, 139)
+uistrokewallcheckcheck.Thickness = 1
+uistrokewallcheckcheck.Parent = checkmarkWallcheck
+
 local wallcheckbuttoncorner = Instance.new("UICorner")
 wallcheckbuttoncorner.CornerRadius = UDim.new(0, 8)
 wallcheckbuttoncorner.Parent = checkmarkWallcheck
 
+local teamCheckFrame = Instance.new("Frame")
+teamCheckFrame.Name = "TeamCheck"
+teamCheckFrame.Size = UDim2.new(0, 479, 0, 42)
+teamCheckFrame.BackgroundColor3 = Color3.fromRGB(34, 37, 43)
+teamCheckFrame.Parent = buttonContainer
+
+local teamCheckText = Instance.new("TextLabel")
+teamCheckText.Name = "TextLabel"
+teamCheckText.Size = UDim2.new(0, 330, 0, 26)
+teamCheckText.Position = UDim2.new(0.019, 0, 0.19, 0)
+teamCheckText.Text = "Teamcheck"
+teamCheckText.TextScaled = true
+teamCheckText.TextColor3 = Color3.fromRGB(255, 255, 255)
+teamCheckText.Font = Enum.Font.GothamBold
+teamCheckText.TextXAlignment = Enum.TextXAlignment.Left
+teamCheckText.BackgroundTransparency = 1
+teamCheckText.Parent = teamCheckFrame
+
+local teamCheckUICorner = Instance.new("UICorner")
+teamCheckUICorner.CornerRadius = UDim.new(0, 8)
+teamCheckUICorner.Parent = teamCheckFrame
+
+local teamCheckEnabled = Instance.new("BoolValue")
+teamCheckEnabled.Name = "Enabled"
+teamCheckEnabled.Parent = teamCheckFrame
+teamCheckEnabled.Value = false
+
+local checkmarkTeamCheck = Instance.new("ImageButton")
+checkmarkTeamCheck.Name = "Checkmark"
+checkmarkTeamCheck.Size = UDim2.new(0, 34, 0, 34)
+checkmarkTeamCheck.Position = UDim2.new(0.898, 0, 0.095, 0)
+checkmarkTeamCheck.Image = "rbxassetid://6475688241"
+checkmarkTeamCheck.ImageTransparency = 1
+checkmarkTeamCheck.BackgroundColor3 = Color3.fromRGB(21, 23, 27)
+checkmarkTeamCheck.Parent = teamCheckFrame
+
+local teamCheckButtonCorner = Instance.new("UICorner")
+teamCheckButtonCorner.CornerRadius = UDim.new(0, 8)
+teamCheckButtonCorner.Parent = checkmarkTeamCheck
+
+local uistroketeamcheck = Instance.new("UIStroke")
+uistroketeamcheck.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+uistroketeamcheck.Color = Color3.fromRGB(139, 139, 139)
+uistroketeamcheck.Thickness = 1
+uistroketeamcheck.Parent = teamCheckFrame
+
+local uistroketeamcheckbtn = Instance.new("UIStroke")
+uistroketeamcheckbtn.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+uistroketeamcheckbtn.Color = Color3.fromRGB(139, 139, 139)
+uistroketeamcheckbtn.Thickness = 1
+uistroketeamcheckbtn.Parent = checkmarkTeamCheck
+
+local versiontext = Instance.new("TextLabel")
+versiontext.Name = "TextLabel"
+versiontext.Size = UDim2.new(0, 50, 0, 13)
+versiontext.Position = UDim2.new(0, 0, 0.959, 0)
+versiontext.Text = "V0.1.1"
+versiontext.TextScaled = true
+versiontext.TextColor3 = Color3.fromRGB(255, 255, 255)
+versiontext.Font = Enum.Font.Gotham
+versiontext.BackgroundTransparency = 1
+versiontext.TextTransparency = 0.4
+versiontext.Parent = container
+
 local dragging = false
-local offset = Vector2.new(0, 0)
-local mousePos = Vector2.new(0, 0)
+local dragStart = Vector2.new(0, 0)
+local startPos = UDim2.new(0, 0, 0, 0)
+
+local userInputService = game:GetService("UserInputService")
+local runService = game:GetService("RunService")
 
 header.InputBegan:Connect(function(input)
 	if input.UserInputType == Enum.UserInputType.MouseButton1 then
 		dragging = true
-		mousePos = game:GetService("UserInputService"):GetMouseLocation()
-
-		local containerPosition = container.AbsolutePosition
-
-		offset = Vector2.new(containerPosition.X, containerPosition.Y) - mousePos
+		dragStart = input.Position
+		startPos = container.Position
 	end
 end)
 
@@ -174,14 +266,20 @@ header.InputEnded:Connect(function(input)
 	end
 end)
 
-game:GetService("RunService").Heartbeat:Connect(function()
-	if dragging then
-		local delta = game:GetService("UserInputService"):GetMouseLocation() - mousePos
-		container.Position = UDim2.new(0, delta.X + offset.X, 0, delta.Y + offset.Y)
+userInputService.InputChanged:Connect(function(input)
+	if dragging and input.UserInputType == Enum.UserInputType.MouseMovement then
+		local delta = input.Position - dragStart
+		container.Position = UDim2.new(
+			startPos.X.Scale,
+			startPos.X.Offset + delta.X,
+			startPos.Y.Scale,
+			startPos.Y.Offset + delta.Y
+		)
 	end
 end)
 
 -- aimbot stuff
+
 local mouse = player:GetMouse()
 local camera = workspace.CurrentCamera
 local RunService = game:GetService("RunService")
@@ -189,17 +287,22 @@ local RunService = game:GetService("RunService")
 local isTracking = false
 local targetHead = nil
 
-local function toggleCheckmark(frame)
-	local checkmark = frame.Checkmark
-	local enabled = frame.Enabled
-	enabled.Value = not enabled.Value
+local function setupCheckmark(frame)
+	local checkmark = frame:FindFirstChild("Checkmark")
+	local enabled = frame:FindFirstChild("Enabled")
 
-	if enabled.Value then
-		checkmark.ImageTransparency = 0
-	else
-		checkmark.ImageTransparency = 1
+	if checkmark and enabled then
+		checkmark.MouseButton1Click:Connect(function()
+			enabled.Value = not enabled.Value
+
+			checkmark.ImageTransparency = enabled.Value and 0 or 1
+		end)
 	end
 end
+
+setupCheckmark(trackingEnabledFrame)
+setupCheckmark(wallcheckFrame)
+setupCheckmark(teamCheckFrame)
 
 -- Wall check function
 local function isTargetVisible(targetHead)
@@ -214,7 +317,6 @@ local function isTargetVisible(targetHead)
 	return not result or result.Instance:IsDescendantOf(targetHead.Parent)
 end
 
--- Find closest target
 local function getClosestHead()
 	local closestDistance = math.huge
 	local closestHead = nil
@@ -224,10 +326,12 @@ local function getClosestHead()
 			local head = otherPlayer.Character.Head
 			local distance = (head.Position - camera.CFrame.Position).Magnitude
 
-			if distance < closestDistance then
-				if not wallcheckEnabled.Value or isTargetVisible(head) then
-					closestDistance = distance
-					closestHead = head
+			if not teamCheckEnabled.Value or otherPlayer.Team ~= player.Team then
+				if distance < closestDistance then
+					if not wallcheckEnabled.Value or isTargetVisible(head) then
+						closestDistance = distance
+						closestHead = head
+					end
 				end
 			end
 		end
@@ -236,7 +340,6 @@ local function getClosestHead()
 	return closestHead
 end
 
--- Enable/disable right-click tracking
 mouse.Button2Down:Connect(function()
 	if trackingEnabled.Value then
 		isTracking = true
@@ -260,7 +363,6 @@ mouse.Button2Up:Connect(function()
 	RunService:UnbindFromRenderStep("SmoothTracking")
 end)
 
--- Helper to set up click detection on frames
 local function setupFrameClick(frame, callback)
 	frame.InputBegan:Connect(function(input)
 		if input.UserInputType == Enum.UserInputType.MouseButton1 then
@@ -269,11 +371,14 @@ local function setupFrameClick(frame, callback)
 	end)
 end
 
--- Connect frame click toggles
-setupFrameClick(trackingEnabledFrame, function()
-	toggleCheckmark(trackingEnabledFrame)
+setupFrameClick(checkmarkTracking, function()
+	setupCheckmark(checkmarkTracking)
 end)
 
-setupFrameClick(wallcheckFrame, function()
-	toggleCheckmark(wallcheckFrame)
+setupFrameClick(checkmarkWallcheck, function()
+	setupCheckmark(checkmarkWallcheck)
+end)
+
+setupFrameClick(checkmarkTeamCheck, function()
+	setupCheckmark(checkmarkTeamCheck)
 end)
