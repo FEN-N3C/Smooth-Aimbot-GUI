@@ -153,8 +153,35 @@ local wallcheckbuttoncorner = Instance.new("UICorner")
 wallcheckbuttoncorner.CornerRadius = UDim.new(0, 8)
 wallcheckbuttoncorner.Parent = checkmarkWallcheck
 
--- rest of script
+local dragging = false
+local offset = Vector2.new(0, 0)
+local mousePos = Vector2.new(0, 0)
 
+header.InputBegan:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseButton1 then
+		dragging = true
+		mousePos = game:GetService("UserInputService"):GetMouseLocation()
+
+		local containerPosition = container.AbsolutePosition
+
+		offset = Vector2.new(containerPosition.X, containerPosition.Y) - mousePos
+	end
+end)
+
+header.InputEnded:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseButton1 then
+		dragging = false
+	end
+end)
+
+game:GetService("RunService").Heartbeat:Connect(function()
+	if dragging then
+		local delta = game:GetService("UserInputService"):GetMouseLocation() - mousePos
+		container.Position = UDim2.new(0, delta.X + offset.X, 0, delta.Y + offset.Y)
+	end
+end)
+
+-- aimbot stuff
 local mouse = player:GetMouse()
 local camera = workspace.CurrentCamera
 local RunService = game:GetService("RunService")
