@@ -1,4 +1,5 @@
-# THIS SCRIPT IS DISCONTINUED, A NEW REPLACEMENT VERSION IS BEING CREATED **https://github.com/FEN-N3C/Axis-Hub**
+### THIS SCRIPT IS DISCONTINUED, A NEW REPLACEMENT VERSION IS BEING CREATED:
+### **https://github.com/FEN-N3C/StructraHub**
 
 # Smooth Aimbot GUI
 **Created by [FEN_N3C](https://github.com/FEN-N3C)**  
